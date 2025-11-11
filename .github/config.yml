@@ -1,3 +1,16 @@
+steps:
+  - uses: actions/checkout@v4
+
+  # --- THIS IS THE FIX ---
+  - name: Set up Ruby
+    uses: ruby/setup-ruby@v1
+    with:
+      ruby-version: 3.1 # Or whatever version your site uses
+      bundler-cache: true # This installs gems (including Jekyll)
+
+  # --- NOW THIS COMMAND WILL WORK ---
+  - name: Build site
+    run: bundle exec jekyll build
 # Comment to be posted to on first time issues
 newIssueWelcomeComment: |
   Thanks for opening your first issue! 
